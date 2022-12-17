@@ -6,11 +6,11 @@ function App() {
   const [operation, setOperation] = useState(null);
   const [prevNum, setPrevNum] = useState(0);
 
-  useEffect(() => setRealTotal(Number(total)), [total])
+  useEffect(() => setRealTotal(Number(total)), [total]);
 
   function changeNum(num) {
     if (total > 0) {
-      setTotal(String(total) + String(num))
+      setTotal(String(total) + String(num));
       return;
     }
     setTotal(num);
@@ -36,6 +36,12 @@ function App() {
       case "multi":
         setTotal(prevNum * realTotal);
         break;
+      case "modulus":
+        setTotal(prevNum % realTotal);
+        break;
+      case "exponent":
+        setTotal(prevNum ** realTotal);
+        break;
       default:
         console.log("how did you get here?");
         break;
@@ -56,6 +62,8 @@ function App() {
         <button onClick={() => operations("minus")}>-</button>
         <button onClick={() => operations("multi")}>*</button>
         <button onClick={() => operations("div")}>/</button>
+        <button onClick={() => operations("modulus")}>%</button>
+        <button onClick={() => operations("exponent")}>^</button>
         <button onClick={() => clear()}>c</button>
         <button onClick={() => equals()}>=</button>
       </div>
